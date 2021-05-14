@@ -6,7 +6,7 @@ import StatCounter from './StatCounter';
 class CharacterBuilder extends Component { 
 
     state = { 
-        characterName: "Gus",
+        characterName: "Character name should appear here",
         characterStats: [ 
             { attribute: "strength", value: 1},
             { attribute: "intellect", value: 0},
@@ -18,7 +18,7 @@ class CharacterBuilder extends Component {
     render() { 
         return(
             <div>
-                <h2>Character Name: {this.state.characterName}</h2>
+                <h2>Character Name: '{this.state.characterName}'</h2>
 
                 {this.state.characterStats.map(stats => { 
                     return <StatCounter key={stats.id} characterStats={stats} />
