@@ -1,9 +1,9 @@
-import './App.css';
+import React from 'react';
+
 
 // Component imports
-import Header from './Components/Header';
-import CharacterBuilder from './Components/Character';
-import React from 'react';
+import Header from './Components/Header/Header';
+import CharacterBuilder from './Components/CharacterBuilder';
 
 function App() {
     return (
