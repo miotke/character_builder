@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import CharacterBackStory from './CharacterBackStory';
 
 // Component imports
 import StatCounter from './StatCounter';
@@ -48,6 +49,7 @@ class CharacterBuilder extends Component {
                             />
 
                 })}
+                <CharacterBackStory />
             </div>
         )
     }
