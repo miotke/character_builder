@@ -6,7 +6,7 @@ class CharacterBackStory extends Component {
         return (
             <div>
                 <h3>Back Story</h3>
-                <p>A backstory input box will eventually go here.</p>
+                <p>{this.props.backstory}</p>
             </div>
         )
     }

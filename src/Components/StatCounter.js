@@ -15,8 +15,6 @@ class StatCounter extends Component {
     render() {
         return (
             <Fragment>
-                <h4>Available attribute points: {this.props.attPoints}</h4>
-
                 <div>
                     <h3>{this.getStat()}</h3>
                     <p>{this.getAttribute()}</p>
