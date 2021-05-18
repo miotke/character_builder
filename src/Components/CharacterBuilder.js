@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 // Component imports
 import StatCounter from './StatCounter';
 import CharacterBackStory from './CharacterBackStory';
-import CharacterRace from './ChracterRace';
+import CharacterRace from './CharacterRace';
 
 class CharacterBuilder extends Component { 
 
