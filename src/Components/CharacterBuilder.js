@@ -21,10 +21,6 @@ class CharacterBuilder extends Component {
         characterRace: "",
     }
 
-    handleAvailableAttributePoints = () => { 
-        console.log('available points ' + this.state.availableAttributePoints);
-    }
-
     handleSubtractingStatPoint = stat => { 
         const characterStats = [...this.state.characterStats]
         const index = characterStats.indexOf(stat)
