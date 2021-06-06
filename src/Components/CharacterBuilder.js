@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import StatCounter from './StatCounter';
 import CharacterBackStory from './CharacterBackStory';
 import CharacterRace from './CharacterRace';
+import StatCounterContainer from './StatCountersContainer';
 
 
 class CharacterBuilder extends Component { 
@@ -25,6 +26,16 @@ class CharacterBuilder extends Component {
         console.log('available points ' + this.state.availableAttributePoints);
     }
 
+    handleSubtractStatPoint = () => { 
+        console.log('Remove stats!');
+        // TODO: 
+        //  - Subtract one from value
+        //  - Add one to availableAttributePoints
+        this.setState({ 
+            availableAttributePoints: this.state.availableAttributePoints - 1
+        })
+    }
+
     handleAddStatPoint = () => { 
         console.log('Add stats!');
         // TODO: 
@@ -35,14 +46,12 @@ class CharacterBuilder extends Component {
         })
     }
 
-    handleSubtractStatPoint = () => { 
-        console.log('Remove stats!');
-        // TODO: 
-        //  - Subtract one from value
-        //  - Add one to availableAttributePoints
-        this.setState({ 
-            availableAttributePoints: this.state.availableAttributePoints - 1
-        })
+    handleIncrement = stat => {
+        const characterStats = [...this.state.characterStats]
+        const index = characterStats.indexOf(stat)
+        characterStats[index] = {...stat}
+        characterStats[index].value++
+        this.setState({characterStats})
     }
 
     handleOptionChange = changeRace => { 
@@ -63,19 +72,22 @@ class CharacterBuilder extends Component {
 
                 <h5>Available attributes: {this.state.availableAttributePoints}</h5>
 
-                {/* <Button title={"-"} task={() => this.handleSubtractStatPoint()}></Button>
-                <Button title={"+"} task={() => this.handleAddStatPoint()}></Button> */}
+                <StatCounterContainer
+                    statCounters={this.state.characterStats}
+                    onIncrement={this.handleIncrement}
+                />
 
-                {this.state.characterStats.map(stats => { 
+                {/* {this.state.characterStats.map(stats => { 
                     return <StatCounter 
-                                key={stats.attribute} 
-                                onAddStatPoint={this.handleAddStatPoint} 
-                                onSubtractStatPoint={this.handleSubtractStatPoint} 
+                                key={stats.attribute}
+                                onSubtractStatPoint={this.handleSubtractStatPoint}
+                                // onAddStatPoint={this.handleAddStatPoint}
+                                onAddStatPoint={this.handleIncrement}
                                 attPoints={this.state.availableAttributePoints}
-                                stats={stats} 
+                                stats={stats}
                             />
 
-                })}
+                })} */}
 
                 {/* <CharacterRace selectedRace={this.state.characterRace} onChange={this.handleOptionChange} /> */}
                 <CharacterBackStory backstory={this.state.characterBackStory} />
