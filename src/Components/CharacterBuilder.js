@@ -5,6 +5,7 @@ import StatCounter from './StatCounter';
 import CharacterBackStory from './CharacterBackStory';
 import CharacterRace from './CharacterRace';
 
+
 class CharacterBuilder extends Component { 
 
     state = { 
@@ -29,6 +30,9 @@ class CharacterBuilder extends Component {
         // TODO: 
         //  - Add one to value
         //  - Subtract one from availableAttributePoints
+        this.setState({
+            availableAttributePoints: this.state.availableAttributePoints + 1
+        })
     }
 
     handleSubtractStatPoint = () => { 
@@ -36,6 +40,9 @@ class CharacterBuilder extends Component {
         // TODO: 
         //  - Subtract one from value
         //  - Add one to availableAttributePoints
+        this.setState({ 
+            availableAttributePoints: this.state.availableAttributePoints - 1
+        })
     }
 
     handleOptionChange = changeRace => { 
@@ -56,13 +63,16 @@ class CharacterBuilder extends Component {
 
                 <h5>Available attributes: {this.state.availableAttributePoints}</h5>
 
+                {/* <Button title={"-"} task={() => this.handleSubtractStatPoint()}></Button>
+                <Button title={"+"} task={() => this.handleAddStatPoint()}></Button> */}
+
                 {this.state.characterStats.map(stats => { 
                     return <StatCounter 
                                 key={stats.attribute} 
                                 onAddStatPoint={this.handleAddStatPoint} 
                                 onSubtractStatPoint={this.handleSubtractStatPoint} 
                                 attPoints={this.state.availableAttributePoints}
-                                characterStats={stats} 
+                                stats={stats} 
                             />
 
                 })}
