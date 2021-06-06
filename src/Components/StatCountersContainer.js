@@ -3,7 +3,7 @@ import StatCounter from './StatCounter'
 
 class StatCounterContainer extends Component { 
     render() { 
-        const { statCounters, characterStat, onDecrement, onIncrement } = this.props
+        const { statCounters, onDecrement, onIncrement } = this.props
 
         return(
             <div>

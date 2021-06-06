@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 
 // Component imports
-import StatCounter from './StatCounter';
 import CharacterBackStory from './CharacterBackStory';
-import CharacterRace from './CharacterRace';
+// import CharacterRace from './CharacterRace';
 import StatCounterContainer from './StatCountersContainer';
 
 
