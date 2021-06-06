@@ -1,29 +1,33 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 
 class StatCounter extends Component {
-
-    getAttribute() {
-        const { attribute } = this.props.characterStats;
-        return attribute;
-    }
-
+    
     getStat() {
-        const { value } = this.props.characterStats;
+        const { value } = this.props.statCounter;
         return value;
     }
-
+    
+    getAttribute() {
+        // Gets the string associated with the State's attribute
+        // then formats the string so that only the first letter 
+        // is capitalized. This enforces string formatting incase I
+        // make a mistake adding attributes to state. 
+        const { attribute } = this.props.statCounter;
+        const formattedAttribute = attribute[0].toUpperCase() + attribute.slice(1).toLowerCase()
+        return formattedAttribute
+    }
+    
     render() {
-        return (
-            <Fragment>
-                <h4>Available attribute points: {this.props.attPoints}</h4>
+        const { onDecrementInStatCounter, onIncrementInStatCounter, statCounter } = this.props
 
-                <div>
-                    <h3>{this.getStat()}</h3>
-                    <p>{this.getAttribute()}</p>
-                    <button onClick={() => this.props.onSubtractStatPoint(this.props.characterStats.value)}>-</button>
-                    <button onClick={() => this.props.onAddStatPoint(this.props.characterStats.value)}>+</button>
-                </div>
-            </Fragment>
+        return (
+            <div>
+                <h3>{this.getStat()}</h3>
+                <p>{this.getAttribute()}</p>
+                <button onClick={() => onDecrementInStatCounter(statCounter)}>-</button>
+                <button onClick={() => onIncrementInStatCounter(statCounter)}>+</button>
+
+            </div>
         )
     }
 }
