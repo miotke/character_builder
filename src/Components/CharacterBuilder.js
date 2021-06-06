@@ -26,27 +26,14 @@ class CharacterBuilder extends Component {
         console.log('available points ' + this.state.availableAttributePoints);
     }
 
-    handleSubtractStatPoint = () => { 
-        console.log('Remove stats!');
-        // TODO: 
-        //  - Subtract one from value
-        //  - Add one to availableAttributePoints
-        this.setState({ 
-            availableAttributePoints: this.state.availableAttributePoints - 1
-        })
+    handleSubtractingStatPoint = stat => { 
+        const characterStats = [...this.state.characterStats]
+        const index = characterStats.indexOf(stat)
+        characterStats[index].value--
+        this.setState({characterStats})
     }
 
-    handleAddStatPoint = () => { 
-        console.log('Add stats!');
-        // TODO: 
-        //  - Add one to value
-        //  - Subtract one from availableAttributePoints
-        this.setState({
-            availableAttributePoints: this.state.availableAttributePoints + 1
-        })
-    }
-
-    handleIncrement = stat => {
+    handleAddStatPoint = stat => {
         const characterStats = [...this.state.characterStats]
         const index = characterStats.indexOf(stat)
         characterStats[index] = {...stat}
@@ -74,20 +61,9 @@ class CharacterBuilder extends Component {
 
                 <StatCounterContainer
                     statCounters={this.state.characterStats}
-                    onIncrement={this.handleIncrement}
+                    onDecrement={this.handleSubtractingStatPoint}
+                    onIncrement={this.handleAddStatPoint}
                 />
-
-                {/* {this.state.characterStats.map(stats => { 
-                    return <StatCounter 
-                                key={stats.attribute}
-                                onSubtractStatPoint={this.handleSubtractStatPoint}
-                                // onAddStatPoint={this.handleAddStatPoint}
-                                onAddStatPoint={this.handleIncrement}
-                                attPoints={this.state.availableAttributePoints}
-                                stats={stats}
-                            />
-
-                })} */}
 
                 {/* <CharacterRace selectedRace={this.state.characterRace} onChange={this.handleOptionChange} /> */}
                 <CharacterBackStory backstory={this.state.characterBackStory} />

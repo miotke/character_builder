@@ -13,14 +13,15 @@ class StatCounter extends Component {
     }
     
     render() {
-        const { onIncrementInStatCounter, statCounter } = this.props
+        const { onDecrementInStatCounter, onIncrementInStatCounter, statCounter } = this.props
 
         return (
             <div>
                 <h3>value: {this.getStat()}</h3>
                 <p>attribute: {this.getAttribute()}</p>
-                <button onClick={() => onIncrementInStatCounter(this.props.statCounter)}>+</button>
-                {/* <button onClick={() => this.props.onAddStatPoint(this.props.stats)}>+</button> */}
+                <button onClick={() => onDecrementInStatCounter(statCounter)}>-</button>
+                <button onClick={() => onIncrementInStatCounter(statCounter)}>+</button>
+
             </div>
         )
     }
